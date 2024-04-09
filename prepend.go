@@ -31,8 +31,12 @@ func main() {
 			if *dryrun {
 				fmt.Println(path)
 			} else {
+				stat, err := os.Stat(path)
+				if err != nil {
+					panic(err)
+				}
 				data = append([]byte(*prefix), data...)
-				if err := os.WriteFile(path, data); err != nil {
+				if err := os.WriteFile(path, data, stat.Mode()); err != nil {
 					panic(err)
 				}
 			}
