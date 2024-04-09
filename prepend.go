@@ -12,6 +12,7 @@ func main() {
 	glob := flag.String("glob", "", "What files to prepend to.")
 	prefix := flag.String("prefix", "", "What to ensure they are prepended with.")
 	dryrun := flag.Bool("dryrun", false, "Whether to only print the files that would have been prepended.")
+	flag.Parse()
 
 	if *glob == "" || *prefix == "" {
 		flag.Usage()
